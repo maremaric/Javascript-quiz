@@ -23,6 +23,17 @@ body {
     border-radius: 10px;
 }
 
+.custom__box::before,
+.custom__box::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.custom__box.hide {
+    display: none;
+}
+
 .home__box h3 {
     font-size: 18px;
     color: #000000;
@@ -43,6 +54,10 @@ body {
     font-weight: 500;
 }
 
+.home__box .btn {
+    margin-top: 20px;
+}
+
 .btn {
     padding: 15px 45px;
     background-color: #009688;
@@ -50,4 +65,104 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    display: inline-block;
 }
+
+.quiz__box .question__number,
+.quiz__box .question__text,
+.quiz__box .option__container,
+.quiz__box .next__question__btn,
+.quiz__box .answers__indicator {
+    width: 100%;
+    float: left;
+}
+
+.quiz__box .question__number {
+    font-size: 18px;
+    color: #009688;
+    font-weight: 600;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+    line-height: 25px;
+}
+
+.quiz__box .question__text {
+    font-size: 22px;
+    color: #000000;
+    line-height: 28px;
+    font-weight: 400;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.quiz__box .option__container {
+
+}
+
+.quiz__box .option__container .option {
+    background-color: #cccccc;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.quiz__box .btn {
+    margin: 15px 0;
+}
+
+.quiz__box .answers__indicator {
+    border-top: 1px solid #cccccc;
+}
+
+.quiz__box .answers__indicator div{
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background-color: #cccccc;
+    border-radius: 50%;
+    margin-right: 3px;
+    margin-top: 15px;
+}
+
+.result__box {
+    text-align: center;
+}
+
+.result__box.hide {
+    display: none;
+}
+
+.result__box h1 {
+    font-size: 36px;
+    line-height: 42px;
+    color: #009688;
+}
+
+.result__box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+.result__box table td {
+    border: 1px solid #cccccc;
+    padding: 8px 15px;
+    font-weight: 500;
+    color: #000000;
+    width: 50%;
+    text-align: left;
+    font-size: 18px;
+}
+
+.result__box .btn {
+    margin-right: 20px;
+}
+
+
