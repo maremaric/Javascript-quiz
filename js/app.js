@@ -40,6 +40,7 @@ function getNewQuestion() {
         availableOptions.push(i);
     }
 
+    optionContainer.innerHTML = '';
     let animationDelay = 0.15;
 
     // create options in html
@@ -68,9 +69,29 @@ function getResult(element) {
     const id = parseInt(element.id);
     // get the answer by comparing the id of clicked option
     if(id === currentQuestion.answer) {
+        // set the green color to the correct option
         element.classList.add("correct");
     } else {
+        // set the red color to the incorrect option
         element.classList.add("wrong");
+
+        // if the answer is incorrect the show the correct option by adding green color the correct option
+        const optionLen = optionContainer.children.length;
+        for(let i = 0; i < optionLen; i++) {
+            if(parseInt(optionContainer.children[i].id) === currentQuestion.answer) {
+                optionContainer.children[i].classList.add("correct");
+            }
+        }
+    }
+
+    unclickableOptions();
+}
+
+// make all the options unclickable once the user select a option ( RESTRICT THE USER TO CHANGE THE OPTION AGAIN )
+function unclickableOptions() {
+    const optionLen = optionContainer.children.length;
+    for(let i = 0; i < optionLen; i++) {
+        optionContainer.children[i].classList.add("already__answered");
     }
 }
 
