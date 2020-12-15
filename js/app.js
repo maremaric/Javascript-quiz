@@ -53,9 +53,9 @@ function getNewQuestion() {
     for(let i = 0; i < optionLen; i++) {
         // random option
         const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
-        // get the position of 'optionIndex' from the availableOptions
+        // get the position of 'optionIndex' from the availableOptions Array
         const index2 = availableOptions.indexOf(optionIndex);
-        // remove the 'optionIndex' from the availableOptions, so that the option does not repeat
+        // remove the 'optionIndex' from the availableOptions Array, so that the option does not repeat
         availableOptions.splice(index2,1);
         const option = document.createElement("div");
         option.innerHTML = currentQuestion.options[optionIndex];
@@ -80,7 +80,6 @@ function getResult(element) {
         // add the indicator to correct mark
         updateAnswerIndicator("correct");
         correctAnswers++;
-        console.log("correct:" + correctAnswers);
     } else {
         // set the red color to the incorrect option
         element.classList.add("wrong");
@@ -122,7 +121,6 @@ function updateAnswerIndicator(markType) {
 
 function next() {
     if(questionCounter === quiz.length) {
-        console.log("quiz over");
         quizOver();
     } else {
         getNewQuestion();
@@ -130,7 +128,7 @@ function next() {
 }
 
 function quizOver() {
-    // hide quiz quizeBox
+    // hide quiz Box
     quizBox.classList.add("hide");
     // show result Box
     resultBox.classList.remove("hide");
@@ -148,16 +146,46 @@ function quizResult() {
     resultBox.querySelector(".total__score").innerHTML =  correctAnswers + " / " + quiz.length;
 }
 
-function tryAgain() {
-    
+function resetQuiz() {
+    questionCounter = 0;
+    correctAnswers = 0;
+    attempt = 0;
 }
 
-window.onload = function() {
+function tryAgain() {
+    // hide the resultBox
+    resultBox.classList.add("hide");
+    // show the quizBox
+    quizBox.classList.remove("hide");
+    resetQuiz();
+    startQuiz();
+}
+
+function goToHome() {
+    // hide result box
+    resultBox.classList.add("hide");
+    // show home box
+    homeBox.classList.remove("hide");
+    resetQuiz();
+}
+
+// #### STARTING POING ####
+
+function startQuiz() {
+
+    // hide home box
+    homeBox.classList.add("hide");
+    // show quiz box
+    quizBox.classList.remove("hide");
     // first we will set all questions in availableQuestions Array
     setAvailableQuestions();
     // second we will call getNewQuestion(); function
     getNewQuestion();
     // to create indicator of answers
     answersIndicator();
+}
+
+window.onload = function() {
+    homeBox.querySelector(".total__question").innerHTML = quiz.length;
 }
 

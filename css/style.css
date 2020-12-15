@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-size: 16px;
-    background: linear-gradient(to right, #00AAFF, #128a20);
+    background: linear-gradient(to right, #00AAFF, #0cab1e);
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
@@ -21,6 +21,18 @@ body {
     margin: 40px auto;
     padding: 30px;
     border-radius: 10px;
+    animation: fadeInRight 1s ease;
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }
 
 .custom__box::before,
@@ -239,4 +251,12 @@ body {
     margin-right: 20px;
 }
 
+@media(max-width: 767px) {
+    .result__box .btn {
+        margin-bottom: 15px;
+    }
+    body {
+        padding: 15px;
+    }
+}
 
