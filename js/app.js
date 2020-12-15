@@ -39,16 +39,39 @@ function getNewQuestion() {
     for(let i = 0; i < optionLen; i++) {
         availableOptions.push(i);
     }
+
+    let animationDelay = 0.15;
+
     // create options in html
     for(let i = 0; i < optionLen; i++) {
+        // random option
+        const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
+        // get the position of 'optionIndex' from the availableOptions
+        const index2 = availableOptions.indexOf(optionIndex);
+        // remove the 'optionIndex' from the availableOptions, so that the option does not repeat
+        availableOptions.splice(index2,1);
         const option = document.createElement("div");
-        option.innerHTML = currentQuestion.options[i];
-        option.id = i;
+        option.innerHTML = currentQuestion.options[optionIndex];
+        option.id = optionIndex;
+        option.style.animationDelay = animationDelay + 's';
+        animationDelay = animationDelay + 0.15;
         option.className = "option";
         optionContainer.appendChild(option);
+        option.setAttribute("onclick", "getResult(this)");
     }
 
     questionCounter++;
+}
+
+// get the result of current attempt question
+function getResult(element) {
+    const id = parseInt(element.id);
+    // get the answer by comparing the id of clicked option
+    if(id === currentQuestion.answer) {
+        element.classList.add("correct");
+    } else {
+        element.classList.add("wrong");
+    }
 }
 
 function next() {
