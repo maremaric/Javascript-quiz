@@ -78,7 +78,6 @@ const quiz = [
     }
 ];
 
-
 // {
 //     q: '3 + 4 = 7',
 //     options: ['true','false'],
